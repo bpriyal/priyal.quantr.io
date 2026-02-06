@@ -1,720 +1,90 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>[Your Name] - Portfolio</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Priyal Bhagwanani | Portfolio</title>
+    <meta name="description" content="Quant Profile & Research Portfolio" />
+    
+    <!-- Tailwind CSS with Dark Mode Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              google: {
+                gray: '#202124',
+                offwhite: '#f8f9fa',
+                darkbg: '#171717',
+                darksurface: '#262626'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Fonts: Inter, Merriweather, and Latin Modern (for LaTeX look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4sm51nBdGOwMJE856KExgam83JhxmvDKr0p+t3J8c8u0yWf" crossorigin="anonymous">
+    
+    <!-- Computer Modern Font for true LaTeX aesthetic -->
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/cmu-serif" type="text/css"/>
 
     <style>
-
-        /* CSS styling to match the clean, text-focused aesthetic of the sources */
-
-        body {
-
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
-            line-height: 1.6;
-
-            max-width: 800px;
-
-            margin: 0 auto;
-
-            padding: 20px;
-
-            color: #333;
-
-        }
-
-        
-
-        /* Navigation styling */
-
-        header { margin-bottom: 40px; }
-
-        nav a { 
-
-            margin-right: 15px; 
-
-            text-decoration: none; 
-
-            color: #0066cc; 
-
-            font-weight: bold; 
-
-        }
-
-        nav a:hover { text-decoration: underline; }
-
-
-
-        /* Typography */
-
-        h1 { font-size: 2.5em; margin-bottom: 10px; }
-
-        h2 { 
-
-            border-bottom: 2px solid #eaecef; 
-
-            padding-bottom: 10px; 
-
-            margin-top: 40px; 
-
-        }
-
-        
-
-        /* Section specific styling */
-
-        .bio { font-size: 1.1em; color: #555; margin-bottom: 30px; }
-
-        .subtitle { color: #666; font-style: italic; margin-bottom: 20px; display: block; }
-
-
-
-        /* List Item Styling (Used for Articles and Projects) */
-
-        .item-row { margin-bottom: 25px; }
-
-        .date-label { 
-
-            font-weight: bold; 
-
-            color: #666; 
-
-            font-size: 0.9em; 
-
-            display: inline-block;
-
-            min-width: 80px; /* Aligns the text after the date */
-
-        }
-
-        .item-title { 
-
-            font-weight: bold; 
-
-            font-size: 1.1em; 
-
-            display: block; 
-
-            color: #222;
-
-        }
-
-        .item-description { 
-
-            margin-top: 5px; 
-
-            color: #444;
-
-        }
-
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .font-latex {
+        font-family: 'CMU Serif Roman', 'Times New Roman', serif;
+      }
+      .serif-text {
+        font-family: 'Merriweather', serif;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #dadce0;
+        border-radius: 4px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #4a4a4a;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #bdc1c6;
+      }
+      
+      /* Markdown Styles */
+      .markdown-body h1 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
+      .markdown-body h2 { font-size: 1.5rem; font-weight: 500; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+      .markdown-body p { margin-bottom: 1rem; line-height: 1.7; }
+      .markdown-body ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+      .markdown-body code { padding: 2px 4px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+      .markdown-body pre { padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; }
     </style>
-
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
 </head>
-
-<body>
-
-
-
-    <!-- Header & Navigation [1] -->
-
-    <header>
-
-        <nav>
-
-            <a href="#home">Home</a>
-
-            <a href="#articles">Articles</a>
-
-            <a href="#projects">Projects</a>
-
-            <a href="#portfolio">Portfolio</a>
-
-        </nav>
-
-    </header>
-
-
-
-    <!-- Introduction Section [1] -->
-
-    <section id="home">
-
-        <h1>Hey, I'm [Your Name] 👋</h1>
-
-        <div class="bio">
-
-            <p>[Insert your professional summary here. Example: I am a software engineer focused on... I enjoy building tools for...]</p>
-
-            <p>[Insert personal interests or call to action. Example: Outside of work, I enjoy...]</p>
-
-            <p>Here, you'll find my portfolio, articles, and projects.</p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- Latest Articles Section [1] -->
-
-    <section id="articles">
-
-        <h2>Latest Articles</h2>
-
-        <span class="subtitle">References and Insight notes.</span>
-
-        
-
-        <!-- Article Entry 1 -->
-
-        <div class="item-row">
-
-            <div class="date-label">[Month Year]</div>
-
-            <span class="item-title">[Article Title Goes Here]</span>
-
-        </div>
-
-
-
-        <!-- Article Entry 2 -->
-
-        <div class="item-row">
-
-            <div class="date-label">[Month Year]</div>
-
-            <span class="item-title">[Article Title Goes Here]</span>
-
-        </div>
-
-
-
-        <!-- Article Entry 3 -->
-
-        <div class="item-row">
-
-            <span class="item-title">[Article Title Goes Here]</span>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- Projects Section [2-4] -->
-
-    <section id="projects">
-
-        <h2>All Projects</h2>
-
-
-
-        <!-- Project Entry 1 (Newest) -->
-
-        <div class="item-row">
-
-            <span class="date-label">[Year]</span>
-
-            <span class="item-title">[Project Title]</span>
-
-            <div class="item-description">[Brief description of the project. Mention the tech stack and the problem it solved.]</div>
-
-        </div>
-
-
-
-        <!-- Project Entry 2 -->
-
-        <div class="item-row">
-
-            <span class="date-label">[Year]</span>
-
-            <span class="item-title">[Project Title]</span>
-
-            <div class="item-description">[Brief description of the project.]</div>
-
-        </div>
-
-
-
-        <!-- Project Entry 3 -->
-
-        <div class="item-row">
-
-            <span class="date-label">[Year]</span>
-
-            <span class="item-title">[Project Title]</span>
-
-            <div class="item-description">[Brief description of the project.]</div>
-
-        </div>
-
-
-
-        <!-- Project Entry 4 -->
-
-        <div class="item-row">
-
-            <span class="date-label">[Year]</span>
-
-            <span class="item-title">[Project Title]</span>
-
-            <div class="item-description">[Brief description of the project.]</div>
-
-        </div>
-
-
-
-        <!-- Project Entry 5 (Oldest) -->
-
-        <div class="item-row">
-
-            <span class="date-label">[Year]</span>
-
-            <span class="item-title">[Project Title]</span>
-
-            <div class="item-description">[Brief description of the project.]</div>
-
-        </div>
-
-    </section>
-
-
-
+  <body class="bg-google-offwhite text-google-gray dark:bg-google-darkbg dark:text-gray-200 transition-colors duration-300">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
-
-</html>
-
-How to Use This
-
-1. Structure: I have maintained the three-part structure found in the sources:
-
-    ◦ Bio/Intro: Derived from Source.
-
-    ◦ Articles: Derived from Source (includes a subtitle and list format).
-
-    ◦ Projects: Derived from Sources,, and (includes Date, Title, and Description fields).
-
-2. Placeholders:
-
-    ◦ Replace [Your Name] with your actual name.
-
-    ◦ Replace [Year], [Month Year], [Article Title], and [Project Title] with your data.
-
-    ◦ Write your own descriptions inside the item-description divs.
-
-3. Deployment:
-
-    ◦ Upload this file to your GitHub repository as index.html.
-
-    ◦ Enable GitHub Pages in the repository settings (pointing to the main branch).
-
-    ◦ Your site will display exactly like the example structure, but with your unique content.
-
-
-
-
-
-
-
-
-
-Today • 19:21
-
-can we clone this website as it is with only placeholders - including all frames tabs etc and the way it is built, leaving headers of the structural components the same but leaving empty space or placeholders for data area
-
-Yes, we can definitely clone the structure. Based on the source text, the website is built with a clean hierarchy: a Bio/Navigation section, a Latest Articles section (with a specific sub-header "References and Insight notes"), and a Projects section (specifically labeled "All Projects").
-
-The sources suggest the "tabs" or "frames" you refer to are the categorical dividers like "All Articles" and "All Projects".
-
-Here is the exact structural clone. I have kept the specific headers found in the source text (e.g., "References and Insight notes") but replaced all personal data (names, specific article titles, project descriptions) with placeholders.
-
-HTML Source Code (index.html)
-
-
-
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>[Your Name] - Portfolio</title>
-
-    <style>
-
-        /* CORE LAYOUT & TYPOGRAPHY */
-
-        body {
-
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
-            line-height: 1.6;
-
-            max-width: 800px;
-
-            margin: 0 auto;
-
-            padding: 40px 20px;
-
-            color: #1a1a1a;
-
-        }
-
-
-
-        /* NAVIGATION TABS STRUCTURE */
-
-        /* Mimics the "Here, you'll find my portfolio, articles, projects" text acting as nav [1] */
-
-        nav {
-
-            margin-bottom: 50px;
-
-            padding-bottom: 20px;
-
-        }
-
-        nav a {
-
-            margin-right: 20px;
-
-            text-decoration: none;
-
-            color: #0066cc;
-
-            font-weight: 600;
-
-            font-size: 1.05em;
-
-        }
-
-        nav a:hover { text-decoration: underline; }
-
-
-
-        /* INTRO SECTION STRUCTURE */
-
-        .intro-header h1 {
-
-            font-size: 2.5rem;
-
-            margin-bottom: 15px;
-
-            letter-spacing: -0.5px;
-
-        }
-
-        .bio-text {
-
-            font-size: 1.15rem;
-
-            color: #4a4a4a;
-
-            margin-bottom: 40px;
-
-        }
-
-
-
-        /* SECTIONS & HEADERS */
-
-        section { margin-bottom: 60px; }
-
-        
-
-        /* Structural Headers from Source [1] */
-
-        h4 {
-
-            font-size: 1.5rem;
-
-            margin-bottom: 10px;
-
-            border-bottom: 1px solid #eaeaea;
-
-            padding-bottom: 10px;
-
-        }
-
-        
-
-        /* Sub-headers/Notes from Source [1] */
-
-        .section-note {
-
-            color: #666;
-
-            font-style: italic;
-
-            display: block;
-
-            margin-bottom: 25px;
-
-            font-size: 0.95rem;
-
-        }
-
-
-
-        /* "TABS" / CATEGORY LABELS */
-
-        /* Mimics the "All Articles" and "All Projects" text blocks [1, 2] */
-
-        .category-tab {
-
-            display: inline-block;
-
-            background-color: #f6f8fa;
-
-            padding: 5px 12px;
-
-            border-radius: 6px;
-
-            font-weight: bold;
-
-            font-size: 0.85rem;
-
-            color: #24292e;
-
-            margin-bottom: 20px;
-
-            border: 1px solid #d1d5da;
-
-        }
-
-
-
-        /* CONTENT LIST ITEMS (PROJECTS & ARTICLES) */
-
-        .list-item {
-
-            margin-bottom: 35px;
-
-            display: flex;
-
-            flex-direction: column;
-
-        }
-
-        
-
-        .item-meta {
-
-            font-size: 0.9rem;
-
-            color: #586069;
-
-            margin-bottom: 4px;
-
-            font-family: monospace; /* Gives it a technical/code look */
-
-        }
-
-        
-
-        .item-title {
-
-            font-size: 1.2rem;
-
-            font-weight: 600;
-
-            color: #0366d6;
-
-            text-decoration: none;
-
-            margin-bottom: 8px;
-
-            display: block;
-
-        }
-
-
-
-        .item-desc {
-
-            color: #24292e;
-
-            font-size: 1rem;
-
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-
-
-    <!-- INTRO FRAME -->
-
-    <section id="portfolio">
-
-        <div class="intro-header">
-
-            <!-- Source [1]: "Hey, I'm [Name]" -->
-
-            <h1>Hey, I'm [Your Name] 👋</h1>
-
-        </div>
-
-        
-
-        <div class="bio-text">
-
-            <!-- Source [1]: Bio text placeholder -->
-
-            <p>[Insert your professional bio here. Example: I am an Engineer focused on... I enjoy building tools for...]</p>
-
-            <p>[Insert personal interests. Example: Outside work, you'll likely find me...]</p>
-
-        </div>
-
-
-
-        <!-- Navigation Links derived from text: "Here, you'll find my portfolio, articles, projects" [1] -->
-
-        <nav>
-
-            <a href="#portfolio">Portfolio</a>
-
-            <a href="#articles">Articles</a>
-
-            <a href="#projects">Projects</a>
-
-        </nav>
-
-    </section>
-
-
-
-    <!-- ARTICLES FRAME -->
-
-    <section id="articles">
-
-        <!-- Structural Header [1] -->
-
-        <h4>Latest Articles</h4>
-
-        
-
-        <!-- Structural Sub-header [1] -->
-
-        <span class="section-note">References and Insight notes.</span>
-
-        
-
-        <!-- "Tab" indicator [1] -->
-
-        <div class="category-tab">All Articles</div>
-
-
-
-        <!-- Article List Item Placeholder -->
-
-        <div class="list-item">
-
-            <span class="item-meta">[Month Year]</span>
-
-            <a href="#" class="item-title">[Article Title Placeholder]</a>
-
-        </div>
-
-
-
-        <div class="list-item">
-
-            <span class="item-meta">[Month Year]</span>
-
-            <a href="#" class="item-title">[Article Title Placeholder]</a>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- PROJECTS FRAME -->
-
-    <section id="projects">
-
-        <!-- Structural Header [2] -->
-
-        <h4>Projects</h4>
-
-
-
-        <!-- "Tab" indicator [2] -->
-
-        <div class="category-tab">All Projects</div>
-
-
-
-        <!-- Project Item Placeholder (Structure from [2]) -->
-
-        <div class="list-item">
-
-            <!-- Year/Date -->
-
-            <span class="item-meta">[Year]</span>
-
-            <!-- Title -->
-
-            <a href="#" class="item-title">[Project Title Placeholder]</a>
-
-            <!-- Description -->
-
-            <div class="item-desc">[Project description goes here. Describe the tools used and the problem solved.]</div>
-
-        </div>
-
-
-
-        <!-- Project Item Placeholder (Structure from [3]) -->
-
-        <div class="list-item">
-
-            <span class="item-meta">[Year]</span>
-
-            <a href="#" class="item-title">[Project Title Placeholder]</a>
-
-            <div class="item-desc">[Project description goes here.]</div>
-
-        </div>
-
-
-
-        <!-- Project Item Placeholder (Structure from [4]) -->
-
-        <div class="list-item">
-
-            <span class="item-meta">[Year]</span>
-
-            <a href="#" class="item-title">[Project Title Placeholder]</a>
-
-            <div class="item-desc">[Project description goes here.]</div>
-
-        </div>
-
-
-
-    </section>
-
-
-
-</body>
-
 </html>
