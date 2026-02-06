@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Priyal Bhagwanani | Portfolio</title>
+    <meta name="description" content="Quant Profile & Research Portfolio" />
+    
+    <!-- Tailwind CSS with Dark Mode Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              google: {
+                gray: '#202124',
+                offwhite: '#f8f9fa',
+                darkbg: '#171717',
+                darksurface: '#262626'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Fonts: Inter, Merriweather, and Latin Modern (for LaTeX look) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4sm51nBdGOwMJE856KExgam83JhxmvDKr0p+t3J8c8u0yWf" crossorigin="anonymous">
+    
+    <!-- Computer Modern Font for true LaTeX aesthetic -->
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/cmu-serif" type="text/css"/>
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .font-latex {
+        font-family: 'CMU Serif Roman', 'Times New Roman', serif;
+      }
+      .serif-text {
+        font-family: 'Merriweather', serif;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #dadce0;
+        border-radius: 4px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #4a4a4a;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #bdc1c6;
+      }
+      
+      /* Markdown Styles */
+      .markdown-body h1 { font-size: 2rem; font-weight: 600; margin-bottom: 1rem; }
+      .markdown-body h2 { font-size: 1.5rem; font-weight: 500; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+      .markdown-body p { margin-bottom: 1rem; line-height: 1.7; }
+      .markdown-body ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+      .markdown-body code { padding: 2px 4px; border-radius: 4px; font-family: monospace; font-size: 0.9em; }
+      .markdown-body pre { padding: 1rem; border-radius: 8px; overflow-x: auto; margin-bottom: 1rem; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-google-offwhite text-google-gray dark:bg-google-darkbg dark:text-gray-200 transition-colors duration-300">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
